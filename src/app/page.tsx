@@ -13,7 +13,7 @@ export default async function Home() {
               key={post.id}
               className="flex items-center justify-between px-5"
             >
-              <Link href={`/posts/${post.id}`}>{post.title}</Link>
+              <Link href={`/post/${post.slug}`}>{post.title}</Link>
             </li>
           ))}
         </ul>
