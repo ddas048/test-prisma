@@ -1,3 +1,4 @@
+import { createPost } from "@/actions/post.action";
 import prisma from "@/lib/db";
 import Link from "next/link";
 
@@ -27,6 +28,27 @@ export default async function Home() {
             </li>
           ))}
         </ul>
+
+        <form action={createPost} className="flex flex-col gap-y-5 w-[300px]">
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            className="text-black"
+          />
+          <textarea
+            name="content"
+            rows={5}
+            placeholder="Content"
+            className="px-2 py-1 rounded-sm text-black"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 py-2 text-white rounded-sm"
+          >
+            Create Post
+          </button>
+        </form>
       </main>
     </div>
   );
