@@ -3,23 +3,30 @@ import prisma from "@/lib/db";
 import Link from "next/link";
 
 export default async function Home() {
-  const posts = await prisma.post.findMany({
-    // where: { published: true },
-    orderBy: { createdAt: "desc" },
-    select: { id: true, title: true, slug: true },
-    take: 10,
-    skip: 0,
-  });
+  // const posts = await prisma.post.findMany({
+  //   // where: { published: true },
+  //   orderBy: { createdAt: "desc" },
+  //   select: { id: true, title: true, slug: true },
+  //   take: 10,
+  //   skip: 0,
+  // });
 
-  const psotCount = await prisma.post.count();
+  // const postCount = await prisma.post.count();
+
+  const user = await prisma.user.findUnique({
+    where: { id: "1ddd9f28-174e-4ac8-885d-02333cb1654f" },
+    include: { posts: true },
+  });
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-3xl font-semibold">All Posts({psotCount})</h1>
+        <h1 className="text-3xl font-semibold">
+          All Posts({user?.posts.length})
+        </h1>
 
         <ul className="border-t border-b border-black/20 py-5 leading-8">
-          {posts.map((post) => (
+          {user?.posts.map((post) => (
             <li
               key={post.id}
               className="flex items-center justify-between px-5"
