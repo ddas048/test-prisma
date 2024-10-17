@@ -14,7 +14,7 @@ export default async function Home() {
   // const postCount = await prisma.post.count();
 
   const user = await prisma.user.findUnique({
-    where: { id: "1ddd9f28-174e-4ac8-885d-02333cb1654f" },
+    where: { email: "a@a.io" },
     include: { posts: true },
   });
 
