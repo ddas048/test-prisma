@@ -12,6 +12,11 @@ export async function createPost(formData: FormData) {
         .replace(/\s+/g, "-")
         .toLowerCase(),
       published: false,
+      author: {
+        connect: {
+          id: "1ddd9f28-174e-4ac8-885d-02333cb1654f",
+        },
+      },
     },
   });
 
