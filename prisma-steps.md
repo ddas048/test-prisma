@@ -12,7 +12,7 @@ pnpm dlx prisma init
 
 ### prisma db push
 
-in dev use this command to generate prisma client after modefying the schema
+in dev use this command to generate prisma client after modefying the schema/.env
 
 ```bash
 pnpm dlx prisma db push
